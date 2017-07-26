@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    .parent{
+        border: 2px solid lightcoral;
+
+        /*flex box idtify*/
+        display:flex;
+    }
+    .item{
+        background: deepskyblue;
+        margin:5px;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+
+        /*flex item*/
+        margin: 5;
+        width:50px;
+
+    }
+</style>
+<body>
+<h1>flex-direction:</h1>
+
+<h4> row</h4>
+<div class="parent flex-direction-row">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+<h4>row-reverse</h4>
+<div class="parent flex-direction-row-reverse">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+<h4>column</h4>
+<div class="parent " style="flex-direction: column">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+
+<h4>column-reverse</h4>
+<div class="parent " style="flex-direction: column-reverse">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+</body>
+</html>

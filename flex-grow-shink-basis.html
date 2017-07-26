@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+
+    .parent{
+        border: 2px solid lightcoral;
+
+        /*flex box idtify*/
+        display:flex;
+    }
+    .item{
+        background: deepskyblue;
+        margin:5px;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+
+        /*flex item*/
+        margin: 5;
+
+    }
+    .tips{
+        position: absolute;
+        border: 1px solid darkolivegreen;
+        color:darkblue;
+    }
+</style>
+<body>
+    <h4>
+        flex-grow,我们来看初始状态,容器宽高固定,item啥都没有,也没有触发弹性布局,
+        这个时候,flex-grow 默认值是0,看看,没有效果。
+    </h4>
+    <style>
+
+        .parent.demo1{
+            width: 500px;
+            height: 200px;
+        }
+        .demo1 .item{
+            height: 50px;
+            flex-grow: 0;
+        }
+    </style>
+    <div class="parent demo1">
+        <div class="tips">默认值 flex-grow:0</div>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h4>好了,flex-grow>0的时候,开始增长了,铺满了x轴线。取负值是非法的,也是做0的兼容,相当于0</h4>
+
+    <style>
+
+        .parent.demo2{
+            width: 500px;
+            height: 200px;
+        }
+        .demo2 .item{
+            height: 50px;
+            flex-grow: 1;
+        }
+    </style>
+    <div class="parent demo2">
+        <div class="tips">
+            flex-grow:1
+        </div>
+        <div class="item">1</div>
+        <div class="item" >2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h4>当然,你可以设置当个item的grow,与其他的item来更具grow值来等分容器的x轴线</h4>
+    <style>
+
+        .parent.demo3{
+            width: 500px;
+            height: 200px;
+        }
+        .demo3 .item{
+            height: 50px;
+            flex-grow: 1;
+        }
+        .demo3 .item:nth-child(3){
+            flex-grow: 2;
+        }
+    </style>
+    <div class="parent demo3">
+        <div class="tips">
+            nt3  flex-grow 2
+        </div>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h4>然后,flex-shrink就是相反的了。手先默认状态,items小于容器的x轴线宽。不触发弹性布局
+
+    </h4>
+
+    <style>
+
+        .parent.demo4{
+            width: 500px;
+            height: 200px;
+        }
+        .demo4 .item{
+            height: 50px;
+            width: 20px;
+        }
+        .demo4 .item:nth-child(3){
+        }
+    </style>
+    <div class="parent demo4">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h4>好了,开始触发,把宽度设大起来,或者增长起来。这个时候,开始</h4>
+
+    <style>
+
+        .parent.demo5{
+            width: 500px;
+            height: 200px;
+        }
+        .demo5 .item{
+            height: 50px;
+            width: 25%;
+        }
+        .demo5 .item:nth-child(3){
+            flex-shrink: 2;
+        }
+    </style>
+    <div class="parent demo5">
+        <div class="tips">
+            shinrk: 2
+        </div>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h4>所以,其实上面我们已经提到了,也就是伸缩的基准。flex-basis。那你说,
+        我干嘛不舍一只一个宽度呢,我设置一个宽度同样可以达到效果啊。
+        看下面这个例子。
+    </h4>
+
+
+    <style>
+
+        .parent.demo6{
+            width: 500px;
+        }
+        .demo6 .item{
+            width: 120px;
+            height: 120px;
+        }
+        .demo6 .item:nth-child(3){
+            flex-basis: 10px;
+        }
+    </style>
+    <div class="parent demo6">
+        <div class="tips">nth3 basis:10px</div>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <div class="parent demo6" style="flex-direction: column">
+        <div class="tips">flex-direction: column; nth3 basis:10px</div>
+
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h4>所以,其实上面的计算也是蛮复杂的,所以,flex给出了一个省时省力一般都可以覆盖到的flex</h4>
+
+    <style>
+
+        .parent.demo7{
+            width: 500px;
+        }
+        .demo7 .item{
+            flex:1
+        }
+        .demo7 .item:nth-child(3){
+            flex:2
+        }
+    </style>
+    <div class="parent demo7">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .parent{
+        border: 2px solid lightcoral;
+        /*flex box idtify*/
+        display:flex;
+    }
+    .item{
+        background: deepskyblue;
+        margin:5px;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+
+        /*flex item*/
+        margin: 5;
+        width:50px;
+
+    }
+
+    .tips{
+        position: absolute;
+        border: 1px solid darkolivegreen;
+        color:darkblue;
+    }
+</style>
+
+
+<style>
+    .pwrap .item{
+        width: 80%;
+    }
+</style>
+<body>
+
+
+<h4>item 设置大于parent,会被parent的宽度限制,除非,你说,flex-wrap=wrap
+    <strong>这里item的宽度是80%</strong>,但是被限制成了五分之一;
+</h4>
+
+<div class="parent pwrap" >
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+<h4> 现在,是用flex wrap了。。</h4>
+<div class="parent pwrap" style="flex-wrap:wrap;" >
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+<h4> 现在,是用flex wrap了。。然后wrap-revers一下</h4>
+<div class="parent pwrap" style="flex-wrap:wrap-reverse;" >
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+<hr>
+<h4>这些其实都是初级功能,wrap有非常都的定位属性,跟align-content结合起来</h4>
+
+<h4>这个时候,重新设置好外框高度,500px,宽度500px,item 高度不设置,默认是strench;</h4>
+<style>
+    .parent.demo5{
+        width: 500px;
+        height: 200px;
+        flex-wrap: wrap;
+    }
+    .parent.demo5 .item{
+        /*重新设置item*/
+        width: 120px;
+
+    }
+</style>
+<div class="parent demo5" style="" >
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+
+<h4>这个时候,改一下item的高度 50px; 这时候,item的宽高都限制住了,</h4>
+<style>
+    .parent.demo6{
+        width: 500px;
+        height: 300px;
+        flex-wrap: wrap;
+    }
+    .parent.demo6 .item{
+        /*重新设置item*/
+        width: 120px;
+        height:50px;
+    }
+</style>
+<div class="parent demo6" style="" >
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+<h4>这个时候,改一下item的高度 50px; 这时候,item的宽高都限制住了,有一个很好 属性,叫做align-content,什么意思,你可以排列你的content,盒模型里面的content就是现在这些item咯。是不是,可以这么理解</h4>
+<style>
+    .parent.demo7{
+        width: 500px;
+        height: 300px;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    .parent.demo7 .item{
+        /*重新设置item*/
+        width: 120px;
+        height:50px;
+    }
+</style>
+
+<div class="parent demo7" style="" >
+    <div class="tips">align-content:center</div>
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+
+<h4>然后,当然flex-start flex-end 就类似咯。有意思的是 space-around</h4>
+<style>
+    .parent.demo8{
+        width: 500px;
+        height: 300px;
+        flex-wrap: wrap;
+
+    }
+    .parent.demo8 .item{
+        /*重新设置item*/
+        width: 120px;
+        height:50px;
+    }
+    .tips{
+        position: absolute;
+        border: 1px solid darkolivegreen;
+    }
+</style>
+
+<div class="parent demo8" style="align-content: space-around;" >
+    <div class="tips">align-content: space-around;</div>
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+<div class="parent demo8" style="align-content: space-between;" >
+    <div class="tips">align-content: space-between;</div>
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+<h4>以及space-between的跟flex-direction叠加起来用的效果,如下图,此时闹钟可以脑补多少场景,你需要可词根次的去排列两边,去浮动,去做各种操作,比如,电梯,购物的电梯,比如一些动态的适配,现在,它那就在那里。。</h4>
+<p>这里为了演示,容器高度设置小一点。 </p>
+<div class="parent demo8" style="height: 200px; align-content: space-between; flex-direction: column" >
+    <div class="tips">align-content: space-between;flex-direction: column;</div>
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+<h4>这个时候,你已经把整个items子容器操控得非常舒服了,它自动wrap,然后,可上可下课中间可对其,居然还可以铺在两边,给你晒被子(space-between);脑补一下between这个单词,你就在那里,就在那个中央,然后,旁边都是items,这些items还可以换方向</h4>
+
+<p>整体的布局可以了,但是当个你要一一一动一动,你当然可以relative了,为什么? realative是写在css解析树里面的规则,基本上都是不会不生效的。</p>
+
+<style>
+    .parent.demo9{
+        width: 500px;
+        height: 300px;
+        flex-wrap: wrap;
+
+    }
+    .parent.demo9 .item{
+        /*重新设置item*/
+        width: 120px;
+        height:50px;
+    }
+    .tips{
+        position: absolute;
+        border: 1px solid darkolivegreen;
+    }
+</style>
+<div class="parent demo9" style="height: 200px; align-content: space-between; flex-direction: column" >
+    <div class="tips">item: position: relative; left: -10px;</div>
+    <div class="item">1</div>
+    <div class="item" style="position: relative; left: -10px;">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+</div>
+
+</body>
+</html>

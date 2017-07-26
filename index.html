@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    .parent{
+        border: 2px solid lightcoral;
+
+        /*flex box idtify*/
+        display:flex;
+    }
+    .item{
+        background: deepskyblue;
+        margin:5px;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+
+        /*flex item*/
+        margin: 5;
+        width:50px;
+
+    }
+
+    .width50{
+        width:50px;
+    }
+
+
+    .flex-direction-row{
+        flex-direction: row;
+
+    }
+
+
+    .flex-direction-row-reverse{
+        flex-direction: row-reverse;
+
+    }
+
+</style>
+<body>
+
+
+
+    <h4>内容的适配  justify-content :center,也即是主轴线x轴线</h4>
+    <div class="parent" style="justify-content: center" >
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h4>内容的适配  justify-content :space-around,相同的margin</h4>
+    <div class="parent" style="justify-content: space-around" >
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <style>
+        .parent.alignItems .item:nth-child(3){
+            font-size: 50px;
+        }
+    </style>
+    <h4> 把高度调高,那就可以来调整竖轴的方向了:align-items内容的适配 ,baseline 的意思是,同样的文本的底部那条线,叫做baseline</h4>
+    <div class="parent alignItems" style="height: 400px; justify-content: center; align-items: baseline" >
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+    <h4>然后看纵轴线,y轴线,类似于x轴线,类似的 justify-content是容器的对其,alginitems是items的排布。</h4>
+
+
+    <style>
+
+        .parent.demo7{
+            width: 500px;
+            height: 500px;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .demo7 .item{
+            width: 100px;
+            height: 50px;
+        }
+        .demo7 .item:nth-child(3){
+
+        }
+    </style>
+    <div class="parent demo7">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+
+
+<p style="color:indianred">不触发flex布局的意思是,触发flexbox的容器布局,不触发items的弹性布局 ; 源代码放在: https://github.com/xiaxiazhu</p>
+
+
+</body>
+</html>
